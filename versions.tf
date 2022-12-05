@@ -1,15 +1,9 @@
 terraform {
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.28.0"
-    }
-
-    random = {
-      source  = "hashicorp/random"
-      version = "3.0.0"
+    # https://registry.terraform.io/providers/confluentinc/confluent/latest/docs
+    confluent = {
+      source  = "confluentinc/confluent"
+      version = "1.19.0"
     }
   }
-
-  required_version = ">= 0.14.0"
 }
