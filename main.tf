@@ -57,18 +57,149 @@ resource "confluent_api_key" "env-manager-kafka-api-key" {
   ]
 }
 
-resource "confluent_kafka_topic" "orders" {
+resource "confluent_kafka_topic" "customers" {
   kafka_cluster {
     id = confluent_kafka_cluster.dev-cluster.id
   }
-  topic_name         = "${var.workshop-topic-prefix}-orders"
+  topic_name         = "${var.workshop-topic-prefix}-customers"
   partitions_count   = 3
   rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
-  # config = {
-  #   "cleanup.policy"    = "compact"
-  #   "max.message.bytes" = "12345"
-  #   "retention.ms"      = "67890"
-  # }
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "addresses" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-addresses"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "phones" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-phones"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "emails" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-emails"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "artists" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-artists"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "venues" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-venues"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "events" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-events"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "tickets" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-tickets"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
+  credentials {
+    key    = confluent_api_key.env-manager-kafka-api-key.id
+    secret = confluent_api_key.env-manager-kafka-api-key.secret
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "confluent_kafka_topic" "streams" {
+  kafka_cluster {
+    id = confluent_kafka_cluster.dev-cluster.id
+  }
+  topic_name         = "${var.workshop-topic-prefix}-streams"
+  partitions_count   = 3
+  rest_endpoint      = confluent_kafka_cluster.dev-cluster.rest_endpoint
   credentials {
     key    = confluent_api_key.env-manager-kafka-api-key.id
     secret = confluent_api_key.env-manager-kafka-api-key.secret
