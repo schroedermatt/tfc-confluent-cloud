@@ -10,7 +10,7 @@
 # }
 
 variable "data-demo-app-topic-prefix" {
-  default = "data-demo-app"
+  default = "data-demo"
 }
 
 variable "workshop-app-topic-prefix" {
