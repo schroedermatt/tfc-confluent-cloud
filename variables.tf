@@ -9,6 +9,10 @@
 #   sensitive   = true
 # }
 
-variable "workshop-topic-prefix" {
-  default = "data-demo"
+variable "data-demo-app-topic-prefix" {
+  default = "data-demo-app"
+}
+
+variable "workshop-app-topic-prefix" {
+  default = "kafka-workshop-"
 }
