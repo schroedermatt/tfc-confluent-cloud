@@ -22,9 +22,6 @@ resource "confluent_kafka_cluster" "dev-cluster" {
   environment {
     id = confluent_environment.workshop.id
   }
-  broker-configs {
-    auto_create_topics_enable = true
-  }
 }
 
 #####################
@@ -121,12 +118,6 @@ resource "confluent_kafka_acl" "data-demo-app-write-on-prefixed-topics" {
 resource "confluent_service_account" "workshop-app" {
   display_name  = "workshop-app"
   description   = "Shared service account for workshop applications"
-}
-
-resource "confluent_role_binding" "workshop-app-developer-manage" {
-  principal   = "User:${confluent_service_account.workshop-app.id}"
-  role_name   = "DeveloperManage"
-  crn_pattern = "${confluent_kafka_cluster.dev-cluster.rbac_crn}/kafka=${confluent_kafka_cluster.dev-cluster.id}/topic=${var.workshop-app-topic-prefix}*"
 }
 
 resource "confluent_api_key" "workshop-app-kafka-api-key" {
